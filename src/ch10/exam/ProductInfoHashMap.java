@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import ch07.exam.Book;
-import ch07.exam.CompackDisk;
+import ch07.exam.CompactDisc;
 import ch07.exam.ConversationBook;
 import ch07.exam.Product;
 
@@ -43,7 +43,7 @@ public class ProductInfoHashMap {
 				String albumTitle=sc.next();
 				System.out.print("가수>>");
 				String singer=sc.next();
-				map.put(++cnt, new CompackDisk(cnt, comment,productor,price,albumTitle, singer));
+				map.put(++cnt, new CompactDisc(cnt, comment,productor,price,albumTitle, singer));
 				break;
 			case 3:
 				System.out.print("책제목>>");
