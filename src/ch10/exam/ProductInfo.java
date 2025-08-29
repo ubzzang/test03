@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import ch07.exam.Book;
-import ch07.exam.CompactDisc;
+import ch07.exam.CompackDisk;
 import ch07.exam.ConversationBook;
 import ch07.exam.Product;
 
@@ -41,7 +41,7 @@ public class ProductInfo {
 				String albumTitle=sc.next();
 				System.out.print("가수>>");
 				String singer=sc.next();
-				vProduct.add(new CompactDisc(++cnt, comment,productor,price,albumTitle, singer));
+				vProduct.add(new CompackDisk(++cnt, comment,productor,price,albumTitle, singer));
 				break;
 			case 3:
 				System.out.print("책제목>>");

@@ -1,18 +1,27 @@
 package ch10.exam;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 
-public class StudentEx {
+public class StudentHashMapEx {
 	static Scanner sc;
-	static ArrayList<Student> aStudent;
+	static HashMap<String,Student> map;
 	
 	static void rankPro() {
-		for(int i=0; i<aStudent.size();i++) {
-			for(int j=0; j<aStudent.size();j++) {
-				aStudent.get(i).setRank(aStudent.get(j));
+		Set<String> keys=map.keySet();
+		Iterator<String> it1=keys.iterator();
+		
+		while(it1.hasNext()) {
+			String key1=it1.next();
+			Iterator<String> it2=keys.iterator();
+			while(it2.hasNext()) {
+				String key2=it2.next();
+				map.get(key1).setRank(map.get(key2));
 			}	
 		}
+		
 	}
 	
 	static void input() {
@@ -27,10 +36,8 @@ public class StudentEx {
 			for(int i=0; i<score.length;i++) {
 				score[i]=sc.nextInt();
 			}
-//			int java=sc.nextInt();
-//			int db=sc.nextInt();
-//			int python=sc.nextInt();
-			aStudent.add(new Student(name,sno,major,score));
+			//Student s=new Student(name, sno, major, score);
+			map.put(name, new Student(name, sno, major, score));
 		}
 		rankPro();
 		System.out.println("데이터 입력완료");
@@ -42,33 +49,26 @@ public class StudentEx {
 			String name=sc.next();
 			if(name.equals("exit"))
 				break;
-			boolean flag=false;
-			for(int i=0; i<aStudent.size();i++) {
-				Student s=aStudent.get(i);
-				if(s.getName().equals(name)){
-					s.display();
-					flag=true;
-				}
-			}
-			if(!flag)
+			boolean flag=map.containsKey(name);
+			if(flag)
+				map.get(name).display();
+			else
 				System.out.println("데이터를 찾지 못했습니다.");
 		}
 		System.out.println("검색종료");
-		
 	}
-
 	static void allShow() {
-		
-		
-		
-		for(int i=0; i<aStudent.size();i++) {
-			System.out.println(aStudent.get(i));
+		Set<String> keys=map.keySet();
+		Iterator<String> it=keys.iterator();
+		while(it.hasNext()) {
+			String key=it.next();
+			System.out.println(map.get(key));
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		aStudent=new ArrayList<>();
+		map=new HashMap<String, Student>();
 		sc=new Scanner(System.in);
 		boolean flag=false;
 		
